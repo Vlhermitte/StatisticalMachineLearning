@@ -1,1 +1,7 @@
+.idea
 /Test/
+/OCR/ocr_names.mat
+/OCR/ocr_names_images
+.*\.pdf
+.*\.gz
+.*\.p
