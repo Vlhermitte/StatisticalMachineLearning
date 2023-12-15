@@ -33,10 +33,20 @@ class LossCrossEntropyForSoftmaxLogits(object):
         super(LossCrossEntropyForSoftmaxLogits, self).__init__()
         self.name = name
 
+    def softmax(self, X):
+        # Numerically stable softmax
+        exps = np.exp(X - np.max(X, axis=1, keepdims=True))
+        return exps / np.sum(exps, axis=1, keepdims=True)
+
     def forward(self, X, T):
         # TODO IMPLEMENT
-        return -np.sum(X * T) / X.shape[0]
+        # Compute softmax probabilities
+        softmax_probs = self.softmax(X)
+        # Compute cross-entropy loss
+        cross_entropy_loss = -np.sum(T * np.log(softmax_probs + 1e-15)) / X.shape[0]
+        return cross_entropy_loss
 
     def delta(self, X, T):
-        # TODO IMPLEMENT
-        return X - T
+        # TODO IMPLEMENT (use numerically stable version)
+        softmax_probs = self.softmax(X)
+        return softmax_probs - T
