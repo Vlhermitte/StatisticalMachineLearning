@@ -4,4 +4,9 @@
 /OCR/ocr_names_images
 .*\.pdf
 .*\.gz
+.*\.tar
+.*\.zip
+.*\.mat
+.*\.npy
 .*\.p
+/EM_Algorithm/em_data.tar
