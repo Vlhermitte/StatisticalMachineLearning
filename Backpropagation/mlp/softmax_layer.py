@@ -9,9 +9,9 @@ class SoftmaxLayer(object):
 
     def forward(self, X):
         # TODO IMPLEMENT
-        return np.exp(X) / np.sum(np.exp(X), axis=1)[:, np.newaxis]
+        return np.exp(X) / np.sum(np.exp(X), axis=1, keepdims=True)
 
     def delta(self, Y, delta_next):
         # TODO IMPLEMENT
-        return Y * (delta_next - np.sum(delta_next * Y, axis=1)[:, np.newaxis])
+        return Y * (delta_next - np.sum(delta_next * Y, axis=1, keepdims=True))
 
