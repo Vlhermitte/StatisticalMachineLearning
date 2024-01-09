@@ -115,8 +115,8 @@ def experiment_MNIST_unstable():
 
     run_info = train(net, X_train, T_train, batch_size=3000, alpha=1e-1,
                      X_test=X_test, T_test=T_test, n_epochs=10, verbose=True)
-    plot_convergence(run_info)
-    plt.show()
+    # plot_convergence(run_info)
+    # plt.show()
 
     with open('MNIST_run_info_unstable.p', 'wb') as f:
         pickle.dump(run_info, f)
